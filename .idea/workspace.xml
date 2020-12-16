@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="accc4c25-4303-464c-9bb4-0e9fafe5d1dd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,9 +35,6 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="npm.start">
-    <configuration name="server.js" type="NodeJSConfigurationType" nameIsGenerated="true" node-parameters="start" path-to-js-file="src/server.js" working-dir="$PROJECT_DIR$">
-      <method v="2" />
-    </configuration>
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="start" />
@@ -47,8 +42,16 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="test nodemon" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="test" />
+      <arguments value="nodemon" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Node.js.server.js" />
+      <item itemvalue="npm.test nodemon" />
       <item itemvalue="npm.start" />
     </list>
   </component>
@@ -60,7 +63,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608069136735</updated>
-      <workItem from="1608069139631" duration="8368000" />
+      <workItem from="1608069139631" duration="10721000" />
+      <workItem from="1608156199435" duration="150000" />
     </task>
     <servers />
   </component>
