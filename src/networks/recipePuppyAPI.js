@@ -1,13 +1,15 @@
 const axios = require("axios")
 
-const RECIPE_BASE_URL = "http://www.recipepuppy.com/api";
-const RECIPE_ADD_INGREDIENTS = "/?i="
+const UrlConst = require("../utils/URLConstants")
 
 module.exports = {
 
+    // region get
     async getRecipesByIngredients(ingredients){
 
-        return await axios.get(RECIPE_BASE_URL + RECIPE_ADD_INGREDIENTS + ingredients)
+        return await axios.get(UrlConst.recipePuppy.RECIPE_BASE_URL + UrlConst.recipePuppy.RECIPE_ADD_INGREDIENTS + ingredients)
 
     }
+    // endregion get
+
 }
