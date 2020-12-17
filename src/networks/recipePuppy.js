@@ -1,26 +1,21 @@
-const axois = require("axios")
-const https = require("https")
+const axios = require("axios")
 
-module.exports = {
+const BASE_URL = "http://www.recipepuppy.com/api";
+const ADD_INGREDIENTS = "/?i="
 
-    async getRecipesAsync(ingredients){
-
-        await axois.get("http://www.recipepuppy.com/api/?i=" + ingredients)
-            .then(response => {
-
-                if(response.status !== 200)
-                    return {
-                        code: response.status,
-                        statusText: response.statusText,
-                        result: null
-                    }
-
-                return {
-                    code: response.status,
-                    statusText: response.statusText,
-                    result: response.data.results
-                }
-            })
-
+const getsIngredients = async (ingredients) =>{
+    try{
+        return await axios.get(BASE_URL + ADD_INGREDIENTS + ingredients)
+    }catch (error) {
+        console.log("error getsIngredients" + error)
     }
 }
+
+const getsRecipes = async (ingredients) =>{
+
+    const recipes = await getsIngredients(ingredients)
+
+    console.log(recipes)
+}
+
+module.exports = getsRecipes;
