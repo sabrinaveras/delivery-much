@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="accc4c25-4303-464c-9bb4-0e9fafe5d1dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/RecipeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/RecipeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/recipeRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/recipeRoute.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1608069136735</updated>
       <workItem from="1608069139631" duration="10721000" />
-      <workItem from="1608156199435" duration="7956000" />
+      <workItem from="1608156199435" duration="8165000" />
     </task>
     <servers />
   </component>
