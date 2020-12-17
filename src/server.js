@@ -13,6 +13,6 @@ app.use(express.urlencoded({ extended: true }))
 require("./routes/recipeRoute")(app)
 
 
-app.listen(3333, () => {
+app.listen(process.env.PORT, () => {
     console.log(`running`)
 })
