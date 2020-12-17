@@ -5,7 +5,7 @@ const RECIPE_ADD_INGREDIENTS = "/?i="
 
 module.exports = {
 
-    async getRecipes(ingredients){
+    async getRecipesByIngredients(ingredients){
 
         return await axios.get(RECIPE_BASE_URL + RECIPE_ADD_INGREDIENTS + ingredients)
 
