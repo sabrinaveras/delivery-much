@@ -1,13 +1,14 @@
-const axios = require("axios")
-
+// APIs
 const RecipePuppyAPI = require("../networks/recipePuppyAPI");
 const GiphyAPI = require("../networks/giphyAPI");
+
+// status code
+const StatusCode = require("../utils/statusCode");
 
 module.exports = {
 
     // region select
-
-    selectRecipes: async function (request, response) {
+    async selectRecipes(request, response) {
 
         try {
             const ingredients = request.query.i
@@ -18,13 +19,13 @@ module.exports = {
 
             // checking if the ingredients is minor the three
             if (ingredientsLength > 3)
-                return response.status(400).json({ error: "Número máximo de ingredientes são 3, você colocou " + ingredientsLength })
+                return response.status(StatusCode.Status400BadRequest).json({ error: "Maximum number of ingredients is 3, you have put " + ingredientsLength })
 
             // getting the recipes
             let recipes = await RecipePuppyAPI.getRecipesByIngredients(ingredients)
 
             // check if the recipes was uploaded
-            if(recipes.status !== 200)
+            if(recipes.status !== StatusCode.Status200OK)
                 return response.status(recipes.status).json({ error: recipes.statusText})
 
             // Going through all the recipes to add image
@@ -37,7 +38,7 @@ module.exports = {
 
 
                 // checking if the giphy was uploaded
-                if(giphy.data.meta.status !== 200)
+                if(giphy.data.meta.status !== StatusCode.Status200OK)
                     giphyImage = "Não foi possível carregar imagem"
                 else
                     giphyImage = giphy.data.data.url
@@ -52,12 +53,11 @@ module.exports = {
 
             }
 
-            return response.status(200).json({ keywords: ingredientsList, recipes: finalRecipes })
+            return response.status(StatusCode.Status200OK).json({ keywords: ingredientsList, recipes: finalRecipes })
         } catch (error) {
-            return response.status(500).json({ error: error.message })
+            return response.status(StatusCode.Status500InternalServerError).json({ error: error.message })
         }
 
     }
-
     // endregion select
 }
