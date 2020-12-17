@@ -1,11 +1,7 @@
 const axios = require("axios")
 
-const RECIPE_BASE_URL = "http://www.recipepuppy.com/api";
-const RECIPE_ADD_INGREDIENTS = "/?i="
-
-const GIPHY_BASE_URL_RANDOM = "http://api.giphy.com/v1/gifs/random?api_key=TY6YhWEJ6b2Bci9M74PTMj2DeQebGgpv"
-const GIPHY_Q = "&q="
-const GIPHY_LIMIT = "&limit=1"
+const RecipePuppyAPI = require("../networks/recipePuppyAPI");
+const GiphyAPI = require("../networks/giphyAPI");
 
 module.exports = {
 
@@ -23,17 +19,16 @@ module.exports = {
             if (ingredientsLength > 3)
                 return response.status(400).json({ error: "Número máximo de ingredientes são 3, você colocou " + ingredientsLength })
 
-            let recipes = await axios.get(RECIPE_BASE_URL + RECIPE_ADD_INGREDIENTS + ingredients)
+            let recipes = await RecipePuppyAPI.getRecipesByIngredients(ingredients)
 
             for (let index = 0; index < recipes.data.results.length; index++){
                 let recipe = recipes.data.results[index]
-                console.log(recipe)
-                let giphy = await axios.get(GIPHY_BASE_URL_RANDOM + GIPHY_Q + recipe.title + GIPHY_LIMIT)
-                console.log(giphy.data.data.url)
+
+                let giphy = await GiphyAPI.getGiphyRandom(recipe.title)
 
                 finalRecipes.push({
                     "title": recipe.title,
-                    "ingredients": ingredientsList,
+                    "ingredients": recipe.ingredients.split(", ").sort(),
                     "link": recipe.href,
                     "gif": giphy.data.data.url
                 })
