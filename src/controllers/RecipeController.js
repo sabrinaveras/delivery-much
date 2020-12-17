@@ -1,9 +1,12 @@
 // APIs
-const RecipePuppyAPI = require("../networks/recipePuppyAPI");
-const GiphyAPI = require("../networks/giphyAPI");
+const RecipePuppyAPI = require("../networks/recipePuppyAPI")
+const GiphyAPI = require("../networks/giphyAPI")
 
 // status code
-const StatusCode = require("../utils/statusCode");
+const StatusCode = require("../utils/statusCode")
+
+// messages
+const messages = require("../utils/messages")
 
 module.exports = {
 
@@ -19,7 +22,7 @@ module.exports = {
 
             // checking if the ingredients is minor the three
             if (ingredientsLength > 3)
-                return response.status(StatusCode.Status400BadRequest).json({ error: "Maximum number of ingredients is 3, you have put " + ingredientsLength })
+                return response.status(StatusCode.Status400BadRequest).json({ error: messages.errorMessage.imageNotUpload + ingredientsLength })
 
             // getting the recipes
             let recipes = await RecipePuppyAPI.getRecipesByIngredients(ingredients)
@@ -39,7 +42,7 @@ module.exports = {
 
                 // checking if the giphy was uploaded
                 if(giphy.data.meta.status !== StatusCode.Status200OK)
-                    giphyImage = "Não foi possível carregar imagem"
+                    giphyImage = messages.errorMessage.imageNotUpload
                 else
                     giphyImage = giphy.data.data.url
 
